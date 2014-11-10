@@ -1,0 +1,5 @@
+include ':Lynda-subtitle-assistance'
+include ':Cocoapods_git_fetch_Examples'
+include ':OpenCourse-subtitle-assistence'
+
+
