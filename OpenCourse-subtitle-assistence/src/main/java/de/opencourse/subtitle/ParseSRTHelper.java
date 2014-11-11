@@ -11,6 +11,9 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.SocketTimeoutException;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,6 +25,10 @@ public class ParseSRTHelper {
 
 	private LinkedHashMap<Integer, SubtitleInfo> subtitleInfoLinkedHashMap = new LinkedHashMap<Integer, SubtitleInfo>();
 	private SubtitleInfo subtitleInfo;
+
+	public static final int TYPE_FETCH_NEXT = 0;
+	public static final int TYPE_FETCH_END = 1;
+	public static final int TYPE_FETCH_TIMEOUT = 2;
 
 	public static void main(String[] args) {
 		ParseSRTHelper parseSRTHelper = new ParseSRTHelper();
@@ -37,21 +44,39 @@ public class ParseSRTHelper {
 
 	private void saveAll(String outPath) {
 
+		Collection<SubtitleInfo> values = subtitleInfoLinkedHashMap.values();
+		Iterator<SubtitleInfo> iterator = values.iterator();
+		while (iterator.hasNext()) {
+			SubtitleInfo subtitleInfo = iterator.next();
+			System.out.println(" = " + subtitleInfo.title);
+		}
+
+		// downloadAndSave
 	}
 
 	private void fetchByUrl(String url) {
 		for (int i = 1; i < 100; i++) {
 			subtitleInfo = null;
-			boolean hasEnd = fetchSubtitleByUrl(String.format("%s%d", url, i));
-			if (hasEnd) {
-				break;
-			} else {
-				subtitleInfoLinkedHashMap.put(i, subtitleInfo);
-			}
+			checkFetchSubtitle(String.format("%s%d", url, i), i);
 		}
 	}
 
-	private boolean fetchSubtitleByUrl(String url) {
+	private int checkFetchSubtitle(String current, int pos) {
+		boolean isEnd = false;
+		int feedType = TYPE_FETCH_NEXT;
+		while (!isEnd) {
+			feedType = fetchSubtitleValid(current);
+			if (feedType != TYPE_FETCH_TIMEOUT) {
+				isEnd = true;
+			}
+			if (feedType == TYPE_FETCH_NEXT) {
+				subtitleInfoLinkedHashMap.put(pos, subtitleInfo);
+			}
+		}
+		return feedType;
+	}
+
+	private int fetchSubtitleValid(String url) {
 		Document doc = null;
 		try {
 			doc = Jsoup.connect(url).get();
@@ -60,8 +85,14 @@ public class ParseSRTHelper {
 				HttpStatusException exception = (HttpStatusException) e;
 				if (exception.getStatusCode() == 404) {
 					System.out.println("StatusCode is 404,not found url:" + url);
-					return true;
+					return TYPE_FETCH_END;
 				}
+			} else if (e instanceof SocketTimeoutException) {
+				// Read timed out
+				SocketTimeoutException exception = (SocketTimeoutException) e;
+				exception.getMessage();
+				System.out.println("Read timed out,current url:" + url);
+				return TYPE_FETCH_TIMEOUT;
 			}
 		}
 
@@ -77,7 +108,8 @@ public class ParseSRTHelper {
 				e.printStackTrace();
 			}
 		}
-		return false;
+
+		return TYPE_FETCH_NEXT;
 	}
 
 	private void getTitle(Document doc) {
