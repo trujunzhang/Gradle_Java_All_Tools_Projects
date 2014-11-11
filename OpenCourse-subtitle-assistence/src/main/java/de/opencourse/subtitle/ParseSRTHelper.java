@@ -1,16 +1,14 @@
 package de.opencourse.subtitle;
 
 import de.opencourse.subtitle.model.SubtitleInfo;
+import de.opencourse.subtitle.utils.DownloadFile;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.SocketTimeoutException;
 import java.util.Collection;
 import java.util.Iterator;
@@ -39,41 +37,49 @@ public class ParseSRTHelper {
 
 		String outPath = "/Volumes/Home/djzhang/Desktop/xxx";
 		parseSRTHelper.saveAll(outPath);
-		int x = 0;
 	}
 
 	private void saveAll(String outPath) {
+		System.out.println("");
 
 		Collection<SubtitleInfo> values = subtitleInfoLinkedHashMap.values();
 		Iterator<SubtitleInfo> iterator = values.iterator();
 		while (iterator.hasNext()) {
 			SubtitleInfo subtitleInfo = iterator.next();
-			System.out.println(" = " + subtitleInfo.title);
+			// System.out.println(" = " + subtitleInfo.title);
+			File outFile = new File(outPath, subtitleInfo.title + ".srt");
+			String absolutePath = outFile.getAbsolutePath();
+			System.out.println("  absolutePath = " + absolutePath);
+			try {
+				DownloadFile.downloadAndSave(outFile, subtitleInfo.downloadUrl);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-
-		// downloadAndSave
 	}
 
 	private void fetchByUrl(String url) {
 		for (int i = 1; i < 100; i++) {
 			subtitleInfo = null;
-			checkFetchSubtitle(String.format("%s%d", url, i), i);
+			int feedType = checkFetchSubtitle(String.format("%s%d", url, i), i);
+			if (feedType == TYPE_FETCH_END) {
+				break;
+			}
 		}
 	}
 
 	private int checkFetchSubtitle(String current, int pos) {
 		boolean isEnd = false;
-		int feedType = TYPE_FETCH_NEXT;
 		while (!isEnd) {
-			feedType = fetchSubtitleValid(current);
+			int feedType = fetchSubtitleValid(current);
 			if (feedType != TYPE_FETCH_TIMEOUT) {
-				isEnd = true;
-			}
-			if (feedType == TYPE_FETCH_NEXT) {
-				subtitleInfoLinkedHashMap.put(pos, subtitleInfo);
+				if (feedType == TYPE_FETCH_NEXT) {
+					subtitleInfoLinkedHashMap.put(pos, subtitleInfo);
+				}
+				return feedType;
 			}
 		}
-		return feedType;
+		return -1;
 	}
 
 	private int fetchSubtitleValid(String url) {
@@ -117,7 +123,7 @@ public class ParseSRTHelper {
 		Elements h2s = session_body.getElementsByTag("h2");
 		Element first = h2s.first();
 		String html = first.html();
-		System.out.println("title is " + html);
+		System.out.println("  title is " + html);
 
 		subtitleInfo = new SubtitleInfo();
 		subtitleInfo.title = html;
@@ -145,7 +151,7 @@ public class ParseSRTHelper {
 			// System.out.println(" reg-0: " + m.group()); // the whole html text
 			String group = m.group(1) + ".srt";
 			subtitleInfo.downloadUrl = group;
-			System.out.println(" subtitle is " + group); // value only
+			System.out.println("  subtitle is " + group); // value only
 		}
 	}
 

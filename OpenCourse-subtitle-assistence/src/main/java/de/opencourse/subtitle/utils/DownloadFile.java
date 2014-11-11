@@ -14,7 +14,7 @@ public class DownloadFile {
 		downloadAndSave(outFile, urlString);
 	}
 
-	private static void downloadAndSave(File outFile, String urlString) throws IOException {
+	public static void downloadAndSave(File outFile, String urlString) throws IOException {
 		URL link = new URL(urlString); // The file that you want to download
 
 		// Code to download
