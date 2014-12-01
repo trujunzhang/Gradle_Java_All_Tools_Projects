@@ -1,22 +1,182 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="EclipseCodeFormatter">
-    <option name="defaultSettings" value="true" />
-    <option name="enableJSFormatting" value="true" />
-    <option name="formatter" value="ECLIPSE" />
-    <option name="id" value="1403420390291" />
-    <option name="name" value="default" />
-    <option name="optimizeImports" value="false" />
-    <option name="pathToConfigFileJS" value="$USER_HOME$/Library/Preferences/Jetbrains/EclipseFormatter/styles/eclipse-formatter-profiles-master/google-style-guide-javascript-eclipse.xml" />
-    <option name="pathToConfigFileJava" value="$USER_HOME$/Library/Preferences/Jetbrains/EclipseFormatter/styles/common/format.xml" />
-    <option name="selectedJavaProfile" value="kuk" />
-    <option name="selectedJavaScriptProfile" value="Google JavaScript Style" />
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.ft" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+    </annotationProcessing>
   </component>
+  <component name="CopyrightManager" default="" />
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any converted="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <breakpoint_rules converted="true" />
+    <ui_properties converted="true" />
+  </component>
+  <component name="DependencyValidationManager">
+    <option name="SKIP_IMPORT_STATEMENTS" value="false" />
+  </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/../../../SketchProjects/mxYoutube/android/mxYoutubeApp" value="18342585155000" />
+        <entry key="$PROJECT_DIR$/../../../project live templates/AndroidGradleTemplate v3.0" value="5635394167000" />
+        <entry key="$PROJECT_DIR$/../../../svn/AndroidGradleTemplate" value="4203216683000" />
+        <entry key="$PROJECT_DIR$/../../../svn/EnterpriseTemplate/mobile/android/MultiEnterAndroidProject/trunk/MultiEnterAndroidProject" value="12641375166000" />
+        <entry key="$PROJECT_DIR$/../../../svn/EnterpriseTemplate/mobile/android/MultiEnterAndroidProject/trunk/MultiEnterAndroidProject/AppGenerator" value="4200139722000" />
+        <entry key="$PROJECT_DIR$/../../../svn/EnterpriseTemplate/mobile/android/MultiEnterAndroidProject/trunk/MultiEnterAndroidProject/AppGenerator/AppDaoGenerator" value="2807865347000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/Android-Github-Gradle" value="4203397039000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/BirtvAndroidProject" value="5596036099000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/Fragment-Gradle/Fragment-master-gradle" value="4199871048000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/Fragment-Gradle/FragmentTabHost-gradle" value="4209755694000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/Fragment-Gradle/FragmentTabHostExample-master" value="4209756060000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/Fragment-Gradle/FragmentTabStudy-master" value="4209756599000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/Fragment-Gradle/fragment_tabs_tutorial-gradle" value="4216992312000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/Fragment-Gradle/kanxue-android-app-master" value="4199898415000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/MultiEnterAndroidProject" value="5599130417000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/android-github-all/Android-Github-Gradle-Lib" value="5604252479000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/android-gradle" value="4213794008000" />
+        <entry key="$PROJECT_DIR$/../../../svn/birtvGradle/githubxxx/android-gradle" value="4200926748000" />
+        <entry key="$PROJECT_DIR$/../../../svn/xmobile-gradle" value="4203325316000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/all-Gradle-AndroidGradleTemplate/ExampleMediaController-master" value="5637158344000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/all-Gradle-AndroidGradleTemplate/ExoPlayer-master" value="5635394167000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/all-Gradle-AndroidGradleTemplate/google-media-framework-android-master" value="5637158344000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/all-Gradle-AndroidGradleTemplate/v1/AndroidVideoView-master" value="5635394167000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/all-Gradle-AndroidGradleTemplate/v1/android-heart-bubbling-surfaceview-dev" value="5635394167000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/all-Gradle-AndroidGradleTemplate/v1/android-sample-surfaceview-master" value="5635394167000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/android-youtube/Gradle-android-youtube-drag-layout" value="4227426561000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/android-youtube/android-youtube-drag-layout-master" value="1377959018000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/github-examples/Gradle-CardsTube" value="5635393881000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/github-examples/Gradle-SlidingMenu" value="5635393881000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/github-examples/YouTubePlaylist" value="4227053380000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/open/ActionBarSherlock-master" value="7010513588000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/open/Gradle-SlidingMenu" value="15497852698000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/open/Gradle-android-player" value="4226977537000" />
+        <entry key="$PROJECT_DIR$/../../OmniOutliner/test/sources/Gradle-YouTube Data API v3-rev107-1.18.0-rc" value="9861501819000" />
+        <entry key="$PROJECT_DIR$/../../android/ActionBarSherlock" value="6995903695000" />
+        <entry key="$PROJECT_DIR$/../../android/ActionBarSherlock/actionbarsherlock" value="6995943632000" />
+        <entry key="$PROJECT_DIR$/../../android/EventBus" value="5596718279000" />
+        <entry key="$PROJECT_DIR$/../../android/GreenDroid-Gradle" value="6996484152000" />
+        <entry key="$PROJECT_DIR$/../../android/greenDAO" value="11164069348000" />
+        <entry key="$PROJECT_DIR$/../../android/robolectric-plugin" value="2800241406000" />
+        <entry key="$PROJECT_DIR$/../../android/robolectric-plugin/examples/SimpleApp" value="1400123024000" />
+        <entry key="$PROJECT_DIR$" value="7075642194000" />
+        <entry key="$PROJECT_DIR$/../../github_Repo/youtube/yt-direct-lite-android" value="1411787911000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidApp/BirtvAndroidProjectJsonCompare" value="1386548432000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidApps/AndroidGradleTemplate" value="9815850356000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidApps/MyApp" value="4201475460000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidApps/android-test-androidquery1" value="4201761750000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidApps/deckard-gradle" value="1400489243000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidApps/gradle-android-test-plugin" value="1400487756000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidApps/greenDAO" value="12635308787000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidApps/mock-http-server" value="1400552926000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidApps/wh-gradle/deckard-gradle" value="1403161397000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidStudio/ScreenShortcut" value="1393295301000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidStudio/androidMaven" value="1392600448000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidStudio/gittest/ScreenShortcut" value="1393308514000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidStudio/gittest/test/ScreenShortcut" value="1393309588000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidStudio/gittest/test1/ScreenShortcut" value="1393311075000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidStudio/gradleAndroid" value="1392683289000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/androidUnitApp/RobolectricDemoProject" value="4200787224000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/gradle-java-projects/Lynda-subtitle-assistance" value="2826341703000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/gradle-java-projects/javaApp" value="2826339846000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/gradleDependencies/AndroidWithRobolectricNexus" value="4201244221000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/gradleDependencies/androidannotations/examples/gradle" value="1398759642000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/gradleUserGuide/AndroidGradleTemplate" value="5604853513000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/groovyApp/JavaAndGroovy" value="1400393965000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/groovyApp/example-ratpack-gradle-groovy-app" value="1400393670000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/junitApps/android-async-http" value="7002787984000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/junitApps/android-studio-instrumentation-test" value="4213398283000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/mvnDelpoy/JavaGradleDemo" value="2802209622000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/mvnDelpoy/gretty/examples/helloGretty7" value="46235934119000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/mvnDelpoy/jetty-gradle-hello-world" value="1401103046000" />
+        <entry key="$USER_HOME$/Desktop/androidUnit/sharedoauth/flickr/androidflickr/flickrandroidapp" value="4220296053000" />
+        <entry key="$USER_HOME$/Desktop/androidstudio/MyApplication" value="4229638693000" />
+        <entry key="$USER_HOME$/Desktop/androidstudio/MyApplication1" value="4229658127000" />
+        <entry key="$USER_HOME$/Desktop/xxx/MyApplication" value="12641415526000" />
+        <entry key="$USER_HOME$/Desktop/xxx/MyApplication2" value="4213813151000" />
+        <entry key="$USER_HOME$/Desktop/xxx/MyApplication3" value="4213825944000" />
+        <entry key="$USER_HOME$/Downloads/ExoPlayer-master" value="5631913096000" />
+        <entry key="$USER_HOME$/Downloads/Groovy-master/FuncProgExtensionModule" value="1360037808000" />
+        <entry key="$USER_HOME$/Downloads/google-media-framework-android-master" value="5631624936000" />
+        <entry key="$PROJECT_DIR$/../../../../../macshare/Home/SHARE/developing/svn/birtvEnterprise/mobile/android/BirtvAndroidProject/branches/BirtvAndroidProjectBeforeJson" value="1388480044000" />
+        <entry key="$PROJECT_DIR$/../../../../../macshare/Home/SHARE/developing/svn/birtvEnterprise/mobile/android/BirtvAndroidProject/trunk/BirtvAndroidProject" value="1388480049000" />
+        <entry key="$PROJECT_DIR$/../../../../../macshare/Home/SHARE/developing/svn/enterpriseTemplate/mobile/android/EnterJsonAndroid/trunk/EnterpriseJsonAndroidProject" value="1386550121000" />
+        <entry key="$PROJECT_DIR$/../../../../../macshare/Home/SHARE/developing/svn/enterpriseTemplate/mobile/android/MultiEnterAndroidProject/trunk/MultiEnterAndroidProject" value="1386550584000" />
+        <entry key="$PROJECT_DIR$/../../../../../macshare/Home/SHARE/developing/wanghaogithub720/android/ActionBarSherlock" value="1392684463000" />
+        <entry key="$PROJECT_DIR$/../../../../../macshare/Home/SHARE/developing/wanghaogithub720/android/IOSXmlGenerator" value="1392274375000" />
+        <entry key="$PROJECT_DIR$/../../../../../macshare/Home/SHARE/developing/wanghaogithub720/android/android-async-http" value="1391997624000" />
+        <entry key="$PROJECT_DIR$/../../../../../macshare/Home/SHARE/developing/wanghaogithub720/android/greenDAO" value="1392274375000" />
+        <entry key="$PROJECT_DIR$/../../../../../macshare/SHARE/Framework/adt-bundle-mac-x86/sdk/samples/android-19/testing/ActivityInstrumentation" value="4213394426000" />
+        <entry key="$PROJECT_DIR$/../../../../../macshare/SHARE/Framework/adt-bundle-mac-x86/sdk/samples/android-20/ui/SlidingTabsBasic" value="4226033229000" />
+        <entry key="$PROJECT_DIR$/../../../../../macshare/SHARE/Framework/adt-bundle-mac-x86/sdk/samples/android-20/ui/SwipeRefreshMultipleViews" value="4226033229000" />
+      </map>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../../macshare/SHARE/HomeBrew/Library/Maven/Home" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -49,8 +209,133 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectModuleManager">
+    <modules />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../macshare/Home/SHARE/developing/svn" />
+    <property name="recentsLimit" value="5" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <list size="0" />
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
   </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
     <option name="USER" value="" />
@@ -70,5 +355,28 @@
     <configuration useDefault="false">$USER_HOME$/.subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
 </project>
-
