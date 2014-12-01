@@ -34,12 +34,19 @@ public class ParseSRTHelper {
     public static void main(String[] args) {
         ParseSRTHelper parseSRTHelper = new ParseSRTHelper();
 
+        System.out.println("");
+        System.out.println(" *********** Fetching urls ***********");
+        System.out.println("");
         parseSRTHelper.fetchByUrl(SubtitleFromData.urlTemplate);
+
+        System.out.println("");
+        System.out.println(" *********** downloading urls ***********");
+        System.out.println("");
         parseSRTHelper.saveAll(new File(outPath, SubtitleFromData.urlTitle));
     }
 
     private void saveAll(File outPath) {
-        System.out.println("");
+        this.checkOutFoldValid(outPath);
 
         Collection<SubtitleInfo> values = subtitleInfoLinkedHashMap.values();
         Iterator<SubtitleInfo> iterator = values.iterator();
@@ -54,6 +61,17 @@ public class ParseSRTHelper {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void checkOutFoldValid(File outPath) {
+        while (true) {
+            if (outPath.exists() == false) {
+                outPath.mkdir();
+            } else {
+                return;
+            }
+            outPath = outPath.getParentFile();
         }
     }
 
@@ -150,7 +168,7 @@ public class ParseSRTHelper {
             // System.out.println(" reg-0: " + m.group()); // the whole html text
             String group = m.group(1) + ".srt";
             subtitleInfo.downloadUrl = group;
-            System.out.println("  subtitle is " + group); // value only
+            System.out.println("    subtitle is " + group); // value only
         }
     }
 
