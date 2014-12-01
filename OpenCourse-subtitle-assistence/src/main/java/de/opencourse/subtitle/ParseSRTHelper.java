@@ -107,14 +107,18 @@ public class ParseSRTHelper {
             if (e instanceof HttpStatusException) {
                 HttpStatusException exception = (HttpStatusException) e;
                 if (exception.getStatusCode() == 404) {
+                    System.out.println();
                     System.out.println("StatusCode is 404,not found url:" + url);
+                    System.out.println();
                     return TYPE_FETCH_END;
                 }
             } else if (e instanceof SocketTimeoutException) {
                 // Read timed out
                 SocketTimeoutException exception = (SocketTimeoutException) e;
-                exception.getMessage();
+//                exception.getMessage();
+                System.out.println();
                 System.out.println("Read timed out,current url:" + url);
+                System.out.println();
                 return TYPE_FETCH_TIMEOUT;
             }
         }

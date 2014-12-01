@@ -34,7 +34,7 @@ public class DownloadFile {
 		fos.close();
 		// End download code
 
-		System.out.println("Finished");
+		System.out.println("       Finished");
 	}
 
 }
