@@ -1,5 +1,11 @@
 include ':Lynda-subtitle-assistance'
 include ':Cocoapods_git_fetch_Examples'
 include ':OpenCourse-subtitle-assistence'
+include ':objc2j-read-only'
+
+include ':Freemark-Tutorial'
+
+include ':JetBrains-check-update'
+
 
 

@@ -3,12 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Cocoapods_git_fetch_Examples/Cocoapods_git_fetch_Examples.iml" filepath="$PROJECT_DIR$/Cocoapods_git_fetch_Examples/Cocoapods_git_fetch_Examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Freemark-Tutorial/Freemark-Tutorial.iml" filepath="$PROJECT_DIR$/Freemark-Tutorial/Freemark-Tutorial.iml" />
       <module fileurl="file://$PROJECT_DIR$/Gradle_Java_All_Tools_Projects.iml" filepath="$PROJECT_DIR$/Gradle_Java_All_Tools_Projects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JetBrains-check-update/JetBrains-check-update.iml" filepath="$PROJECT_DIR$/JetBrains-check-update/JetBrains-check-update.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lynda-subtitle-assistance/Lynda-subtitle-assistance.iml" filepath="$PROJECT_DIR$/Lynda-subtitle-assistance/Lynda-subtitle-assistance.iml" />
       <module fileurl="file://$PROJECT_DIR$/OpenCourse-subtitle-assistence/OpenCourse-subtitle-assistence.iml" filepath="$PROJECT_DIR$/OpenCourse-subtitle-assistence/OpenCourse-subtitle-assistence.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lynda-subtitle-assistance/src/main/main.iml" filepath="$PROJECT_DIR$/Lynda-subtitle-assistance/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lynda-subtitle-assistance/src/test/test.iml" filepath="$PROJECT_DIR$/Lynda-subtitle-assistance/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/objc2j-read-only/objc2j-read-only.iml" filepath="$PROJECT_DIR$/objc2j-read-only/objc2j-read-only.iml" />
     </modules>
   </component>
 </project>
-

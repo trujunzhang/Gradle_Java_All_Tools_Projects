@@ -10,12 +10,14 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Cocoapods_git_fetch_Examples" />
+            <option value="$PROJECT_DIR$/Freemark-Tutorial" />
+            <option value="$PROJECT_DIR$/JetBrains-check-update" />
             <option value="$PROJECT_DIR$/Lynda-subtitle-assistance" />
             <option value="$PROJECT_DIR$/OpenCourse-subtitle-assistence" />
+            <option value="$PROJECT_DIR$/objc2j-read-only" />
           </set>
         </option>
       </GradleProjectSettings>
     </option>
   </component>
 </project>
-
