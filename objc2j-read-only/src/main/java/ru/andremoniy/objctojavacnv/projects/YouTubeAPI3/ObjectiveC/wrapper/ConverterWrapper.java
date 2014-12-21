@@ -2,8 +2,6 @@ package ru.andremoniy.objctojavacnv.projects.YouTubeAPI3.ObjectiveC.wrapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.andremoniy.objctojavacnv.ConverterH;
-import ru.andremoniy.objctojavacnv.ConverterM;
 import ru.andremoniy.objctojavacnv.ConverterProperties;
 import ru.andremoniy.objctojavacnv.Preprocessor;
 import ru.andremoniy.objctojavacnv.antlr.Macros;
@@ -104,7 +102,7 @@ public final class ConverterWrapper {
                     }
                     try {
                         log.info(f.getAbsolutePath() + " converting...");
-                        ConverterH.convert_h(f.getAbsolutePath(), projectContext, null, null);
+                        ConverterWrapperH.convert_h(f.getAbsolutePath(), projectContext, null, null);
                         log.info(f.getAbsolutePath() + " converted (" + projectContext.h_counter + " headers converted).");
                     } catch (Exception e) {
                         log.info("Error converting " + f.getAbsolutePath());
@@ -122,7 +120,7 @@ public final class ConverterWrapper {
                     }
                     try {
                         log.info(f.getAbsolutePath() + " converting...");
-                        ConverterM.convert_m(f.getAbsolutePath(), projectContext, new StringBuilder());
+                        ConverterWrapperM.convert_m(f.getAbsolutePath(), projectContext, new StringBuilder());
                         log.info(f.getAbsolutePath() + " converted.");
                     } catch (Exception e) {
                         log.info("Error converting " + f.getAbsolutePath());
