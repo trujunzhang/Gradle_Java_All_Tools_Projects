@@ -167,6 +167,7 @@ public class ConverterWrapperH {
         }
     }
 
+    // TODO djzhang [class body]
     private static void process_interface_body(StringBuilder sb2, CommonTree tree, ProjectContext projectContext, boolean skipInterface) {
         String currentGroupModifier = "";
         for (Object child : tree.getChildren()) {
@@ -386,7 +387,7 @@ public class ConverterWrapperH {
         sb.append("\n");
     }
 
-    private static void h_process_field(StringBuilder sb, CommonTree tree, ProjectContext projectCtx, String currentGroupModifier, boolean isStatic) {
+    private static void h_process_field(StringBuilder sb, CommonTree tree, ProjectContext projectCtx, String currentGroupModifier, boolean isStatic) {// TODO djzhang initFromDictionary
         String type = "";
         List<String> fieldNameList = new ArrayList<>();
         for (Object child : tree.getChildren()) {
