@@ -16,7 +16,7 @@ import java.util.List;
  * Date: 18.06.12
  * Time: 9:35
  */
-public final class Converter {
+public final class Converter extends Object{
 
     public static final Logger log = LoggerFactory.getLogger(Converter.class);
 

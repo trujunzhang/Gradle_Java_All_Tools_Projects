@@ -54,7 +54,7 @@ public class ConverterWrapperH {
         File hjfile = new File(hfile.getParent() + File.separator + className + ".java");
         hjfile.createNewFile();
 
-        String packageName = hfile.getParent().substring(hfile.getParent().lastIndexOf("src") + 4).replace(File.separator, ".");
+        String packageName = hfile.getParent().substring(hfile.getParent().lastIndexOf("src") + 4).replace(File.separator, ".");// step_01
 
         String input = FileUtils.readFileToString(hfile, ConverterProperties.PROPERTIES.getProperty(ConverterProperties.ENCODING));
         input = input.replace("///", "//");
@@ -97,27 +97,15 @@ public class ConverterWrapperH {
         CommonTree mainInterface = null;
         if (tree.getType() == ObjchLexer.INTERFACE) {
             mainInterface = processInterface(projectContext, pureClassName, className, packageName, cb, addCb, mainInterface, tree);
-        } else {
-            for (Object child : tree.getChildren()) {
-                CommonTree childTree = (CommonTree) child;
-                if (childTree.getType() == ObjchLexer.INTERFACE) {
-                    mainInterface = processInterface(projectContext, pureClassName, className, packageName, cb, addCb, mainInterface, childTree);
-                }
-            }
         }
 
         projectContext.newClass(className, categoryName);
 
-        projectContext.addImports(pureClassName, packageName + "." + projectContext.classCtx.className());
+        projectContext.addImports(pureClassName, packageName + "." + projectContext.classCtx.className());// step_02
         projectContext.addImports(projectContext.classCtx.className(), packageName + "." + projectContext.classCtx.className());
 
         if (mainInterface != null) {
             process_interface(projectContext, mainInterface, mainCb, false, false, cb);
-        } else {
-            mainCb.abstractClass(className, "NSObject");
-        }
-        if (mainInterface != tree) {
-            process_interface_body(mainCb.sb(), tree, projectContext, true); // with skipping interfaces
         }
 
         mainCb.a(addCb);
@@ -144,11 +132,15 @@ public class ConverterWrapperH {
 
         cb.a(mainCb);
 
-        if (!categoryClass)
-            FileUtils.writeStringToFile(hjfile, cb.sb().toString(), ConverterProperties.PROPERTIES.getProperty(ConverterProperties.ENCODING));
+        writeStringToJavaFile(categoryClass, hjfile, cb);
 
         return cb.sb();
 
+    }
+
+    private static void writeStringToJavaFile(boolean categoryClass, File hjfile, ClassBuilder cb) throws IOException {
+        if (!categoryClass)
+            FileUtils.writeStringToFile(hjfile, cb.sb().toString(), ConverterProperties.PROPERTIES.getProperty(ConverterProperties.ENCODING));
     }
 
     private static CommonTree processInterface(ProjectContext projectContext, String pureClassName, String className, String packageName, ClassBuilder cb, ClassBuilder addCb, CommonTree mainInterface, CommonTree childTree) {
@@ -310,7 +302,7 @@ public class ConverterWrapperH {
 
     private static void h_process_interface1(ClassBuilder cb1, CommonTree tree, ProjectContext context, boolean innerClass, ClassBuilder cb2) {
         String interfaceName = "";
-        String superclassName = "NSObject";
+        String superclassName = "Object";
         String category = "";
         for (Object child : tree.getChildren()) {
             switch (((CommonTree) child).token.getType()) {
