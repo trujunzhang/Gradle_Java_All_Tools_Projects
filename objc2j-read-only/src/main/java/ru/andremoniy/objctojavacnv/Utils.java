@@ -119,13 +119,13 @@ public class Utils {
 
     private static List<String> SKIP_TRANSFORM = Arrays.asList("{", "}", "=", "super", "this", "++", "--", "(", ")", ",");
 
-    static String transformType(String type, ClassContext classCtx) {
+    public static String transformType(String type, ClassContext classCtx) {
         type = type.trim();
         if (SKIP_TRANSFORM.contains(type) || type.startsWith("\"") || type.endsWith("\"")) return type;
         if (isNumber(type)) return type;
 
         if (type.matches("void\\s*\\*")) return "Object";
-        // отрезаем *
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ *
         if (type.endsWith("*")) type = type.substring(0, type.length() - 1);
         type = type.trim();
 
