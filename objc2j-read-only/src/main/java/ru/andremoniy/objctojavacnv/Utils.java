@@ -18,13 +18,13 @@ import java.util.*;
 
 public class Utils {
 
-    private static final List<String> NUMERIC_TYPES = Arrays.asList("Integer", "Double", "Short", "Long");
-    private static final List<String> PRIMITIVES = Arrays.asList("void", "char", "int", "double", "float");
-    private static final Map<String, String> importReplaces = new HashMap<String, String>() {{
+    public static final List<String> NUMERIC_TYPES = Arrays.asList("Integer", "Double", "Short", "Long");
+    public static final List<String> PRIMITIVES = Arrays.asList("void", "char", "int", "double", "float");
+    public static final Map<String, String> importReplaces = new HashMap<String, String>() {{
 //        put("stdio.h", "static java.lang.System.out");
     }};
 
-    static String transformObject(String obj, ClassContext classCtx, ExpressionContext exprCtx) {
+    public static String transformObject(String obj, ClassContext classCtx, ExpressionContext exprCtx) {
         switch (obj) {
             case "_cmd":
                 return "\"" + classCtx.methodCtx.methodName + "\"";
@@ -86,7 +86,7 @@ public class Utils {
         return obj;
     }
 
-    private static boolean checkForVariable(String obj, ExpressionContext exprCtx) {
+    public static boolean checkForVariable(String obj, ExpressionContext exprCtx) {
         if (exprCtx != null) {
             for (String varName : exprCtx.blockCtx.variables.keySet()) {
                 if (varName.equals(obj)) {
@@ -107,7 +107,7 @@ public class Utils {
         return false;
     }
 
-    static String transformMethodName(String name) {
+    public static String transformMethodName(String name) {
         switch (name) {
             case "isEqualToString":
                 return "equals";
@@ -117,7 +117,7 @@ public class Utils {
         return name;
     }
 
-    private static List<String> SKIP_TRANSFORM = Arrays.asList("{", "}", "=", "super", "this", "++", "--", "(", ")", ",");
+    public static List<String> SKIP_TRANSFORM = Arrays.asList("{", "}", "=", "super", "this", "++", "--", "(", ")", ",");
 
     public static String transformType(String type, ClassContext classCtx) {
         type = type.trim();
@@ -170,7 +170,7 @@ public class Utils {
         return type;
     }
 
-    private static boolean isNumber(String type) {
+    public static boolean isNumber(String type) {
         try {
             Double.parseDouble(type);
             return true;
@@ -179,7 +179,7 @@ public class Utils {
         }
     }
 
-    private static boolean isPrimitiveType(String type) {
+    public static boolean isPrimitiveType(String type) {
         return PRIMITIVES.contains(type);
     }
 
@@ -221,7 +221,7 @@ public class Utils {
         }
     }
 
-    private static void addNSHeaderImport(ProjectContext projectCtx, String classPath) {
+    public static void addNSHeaderImport(ProjectContext projectCtx, String classPath) {
         String importClassName = classPath.substring(classPath.lastIndexOf(".") + 1);
         if (importClassName.startsWith("NS")) {
             String interfaceName = classPath.substring(0, classPath.lastIndexOf(".")) + ".I" + importClassName;
@@ -337,7 +337,7 @@ public class Utils {
         return "";
     }
 
-    static String curClassField(String object) {
+    public static String curClassField(String object) {
         if (object.endsWith(".class")) {
             object = object.substring(0, object.lastIndexOf(".class"));
         }
