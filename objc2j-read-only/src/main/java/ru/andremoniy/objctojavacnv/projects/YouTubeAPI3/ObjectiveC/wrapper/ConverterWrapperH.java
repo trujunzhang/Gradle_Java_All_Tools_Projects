@@ -266,6 +266,10 @@ public class ConverterWrapperH {
             boolean isClass = Boolean.valueOf(isClassString);
             String typeName = row[0];
             String variableName = row[2];
+            String hashKey = variableName;
+            if (hashKey.equals("identifier")) {
+                hashKey = "id";
+            }
             if (isClass) {
                 sb.append("\t").
                         append("    ").
@@ -275,6 +279,9 @@ public class ConverterWrapperH {
                         append("new ").
                         append(typeName).
                         append("()").
+                        append(".initFromDictionary(getHashMapFromMap(dict, \"").
+                        append(variableName).
+                        append("\"))").
                         append(";").
                         append("\n");
             } else {
@@ -286,7 +293,7 @@ public class ConverterWrapperH {
                         append(" = ").
                         append("getValueFromMap(dict, ").
                         append("\"").
-                        append(variableName).
+                        append(hashKey).
                         append("\"").
                         append(")").
                         append(";").
