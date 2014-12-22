@@ -256,11 +256,11 @@ public class ConverterWrapperH {
 
         sb.append(" {  \n");
         // add method body
-        h_process_default_method_for_initFromDictionary(sb);
+        h_process_method_for_initFromDictionary(sb);
         sb.append("    }\n").append("\n");
     }
 
-    private static void h_process_default_method_for_initFromDictionary(StringBuilder sb) {
+    private static void h_process_method_for_initFromDictionary(StringBuilder sb) {
         for (String[] row : fieldsList) {
             String isClassString = row[3];
             boolean isClass = Boolean.valueOf(isClassString);
@@ -284,7 +284,11 @@ public class ConverterWrapperH {
                         append("this.").
                         append(variableName).
                         append(" = ").
-                        append("\"\"").
+                        append("getValueFromMap(dict, ").
+                        append("\"").
+                        append(variableName).
+                        append("\"").
+                        append(")").
                         append(";").
                         append("\n");
             }
