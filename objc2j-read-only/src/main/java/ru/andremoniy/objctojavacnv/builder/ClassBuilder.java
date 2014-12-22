@@ -36,7 +36,7 @@ public class ClassBuilder {
     }
 
     public void abstractClass(boolean isInner, boolean isInterface, String interfaceName, String superclassName) {
-        sb.append("public abstract ").append(isInner ? "static " : "").append("class ").append(isInterface ? "I" : "").append(interfaceName).append(superclassName.length() > 0 ? (" extends " + superclassName) : "").append(" {").append(R);
+        sb.append("public ").append(isInner ? "static " : "").append("class ").append(isInterface ? "" : "").append(interfaceName).append(superclassName.length() > 0 ? (" extends " + superclassName) : "").append(" {").append(R);
     }
 
     public void abstractInnerInterface(String interfaceName, String superclassName) {

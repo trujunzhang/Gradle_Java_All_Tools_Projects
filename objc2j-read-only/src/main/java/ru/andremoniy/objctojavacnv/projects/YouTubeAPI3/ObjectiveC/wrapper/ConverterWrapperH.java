@@ -50,7 +50,7 @@ public class ConverterWrapperH {
         File hjfile = new File(hfile.getParent() + File.separator + className + ".java");
         hjfile.createNewFile();
 
-        String packageName = hfile.getParent().substring(hfile.getParent().lastIndexOf("src") + 4).replace(File.separator, ".");// step_01
+        String packageName = "mab.yt3.wrapper";// step_01
 
         String input = FileUtils.readFileToString(hfile, ConverterProperties.PROPERTIES.getProperty(ConverterProperties.ENCODING));
         input = input.replace("///", "//");
@@ -76,8 +76,8 @@ public class ConverterWrapperH {
 
         if (!categoryClass) {
             cb.setPackage(packageName);
-            cb.addImport("ru.andremoniy.jcocoa.*");
-            cb.a(originalImportsSb);
+            cb.addImport("java.util.*");
+//            cb.a(originalImportsSb);
         }
 
         if (result.getTree() == null) return cb.sb(); // this is not a error, but file contains only commentaries
@@ -97,15 +97,10 @@ public class ConverterWrapperH {
 
         projectContext.newClass(className, categoryName);
 
-//        projectContext.addImports(pureClassName, packageName + "." + projectContext.classCtx.className());// step_02
-        projectContext.addImports(projectContext.classCtx.className(), packageName + "." + projectContext.classCtx.className());
-
         if (mainInterface != null) {
             cb.sb().append("\n");
             process_interface(projectContext, mainInterface, mainCb, false, false, cb);
         }
-
-        mainCb.a(addCb);
 
         if (importsSb == null) {
             importsSb = new StringBuilder();
@@ -335,19 +330,12 @@ public class ConverterWrapperH {
 
     private static void h_process_interface1(ClassBuilder cb1, CommonTree tree, ProjectContext context, boolean innerClass, ClassBuilder cb2) {
         String interfaceName = "";
-        String superclassName = "Object";
+        String superclassName = "MABYT3_Object";
         String category = "";
         for (Object child : tree.getChildren()) {
             switch (((CommonTree) child).token.getType()) {
-                case ObjchParser.CATEGORY:
-                    category = ((CommonTree) child).getChild(0).toString();
-                    // TODO: use category
-                    break;
                 case ObjchParser.INTERFACE_NAME:
                     interfaceName = ((CommonTree) child).getChild(0).toString();
-                    break;
-                case ObjchParser.SUPERCLASS_NAME:
-                    superclassName = ((CommonTree) child).getChild(0).toString();
                     break;
             }
         }
