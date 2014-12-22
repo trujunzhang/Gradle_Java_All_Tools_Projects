@@ -76,8 +76,7 @@ public class ConverterWrapperH {
 
         if (!categoryClass) {
             cb.setPackage(packageName);
-            cb.addImport("java.util.*");
-//            cb.a(originalImportsSb);
+            cb.addImport("java.util.LinkedHashMap");
         }
 
         if (result.getTree() == null) return cb.sb(); // this is not a error, but file contains only commentaries
@@ -162,9 +161,6 @@ public class ConverterWrapperH {
             }
         }
     }
-
-//    public IMABYT3_Activity() {
-//    }
 
     private static void h_process_default_constructor(StringBuilder sb, CommonTree tree, ProjectContext projectCtx) {
         sb.
@@ -254,15 +250,8 @@ public class ConverterWrapperH {
                 projectCtx.classCtx.categoryName != null ? "_" + projectCtx.classCtx.categoryName + "_" : "").
                 append(name).append("(");
 
-        boolean f = true;
-        for (String pName : params.keySet()) {
-            if (!f) {
-                sb.append(", ");
-            } else {
-                f = false;
-            }
-            sb.append(params.get(pName)).append(" ").append(pName);
-        }
+
+        sb.append("LinkedHashMap<String, Object> dict");
         sb.append(")");
 
         sb.append(" {  \n");
