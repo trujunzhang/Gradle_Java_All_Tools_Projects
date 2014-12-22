@@ -99,6 +99,7 @@ public class ConverterWrapperH {
         projectContext.addImports(projectContext.classCtx.className(), packageName + "." + projectContext.classCtx.className());
 
         if (mainInterface != null) {
+            cb.sb().append("\n");
             process_interface(projectContext, mainInterface, mainCb, false, false, cb);
         }
 
@@ -177,7 +178,7 @@ public class ConverterWrapperH {
                     if (modifier.equals("+")) return;
                     break;
                 case ObjchParser.TYPE:
-                    type = ((CommonTree) child).getChild(0).toString();
+                    type = "void";
                     break;
                 case ObjchParser.METHOD_NAME:
                     name = ((CommonTree) child).getChild(0).toString();
@@ -193,11 +194,14 @@ public class ConverterWrapperH {
 
     private static void h_process_for_initFromDictionary(StringBuilder sb, ProjectContext projectCtx, String type, String name, Map<String, String> params) {
         String transType = Utils.transformType(type, projectCtx.classCtx);
-        sb.append("\t").
+        sb.
+                append("\n").
+                append("\t").
                 append("public ").
                 append(transType).append(" ").append(
                 projectCtx.classCtx.categoryName != null ? "_" + projectCtx.classCtx.categoryName + "_" : "").
                 append(name).append("(");
+
         boolean f = true;
         for (String pName : params.keySet()) {
             if (!f) {
@@ -209,11 +213,14 @@ public class ConverterWrapperH {
         }
         sb.append(")");
 
-        sb.append(" {  ").
-                append("  return ").
-                append(transType.equals("void") ? "" : (transType.equals("boolean") ? "false" : "null")).
-                append(";\n};\n").
-                append("\n");
+        sb.append(" {  \n")
+//                append("    return ").
+//                append(transType.equals("void") ? "" : (transType.equals("boolean") ? "false" : "null"))
+//                .append(";\n")
+                .append("    }\n")
+
+                .append("\n")
+        ;
     }
 
     private static void h_process_method_params(Map<String, String> params, CommonTree tree, ProjectContext projectContext) {
@@ -289,14 +296,16 @@ public class ConverterWrapperH {
             }
         }
         String transformedType = Utils.transformType(type, projectCtx.classCtx);
-        sb.append("\t").append(currentGroupModifier).append(isStatic ? "static " : "").append(" ").append(transformedType).append(" ");
+        sb.
+                append("\t").
+                append(transformedType).
+                append(" ");
         boolean f = true;
         for (String fieldName : fieldNameList) {
             if (!f) {
                 sb.append(", ");
             }
             f = false;
-//            sb.append(fieldName).append(" = ").append(Utils.getDefaultValue(transformedType));
             sb.append(fieldName);
         }
         sb.append(";\n");
