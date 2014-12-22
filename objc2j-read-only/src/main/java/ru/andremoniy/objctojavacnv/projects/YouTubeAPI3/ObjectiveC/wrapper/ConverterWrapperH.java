@@ -46,7 +46,7 @@ public class ConverterWrapperH {
 
         // new file with java code
         String pureClassName = hfile.getName().substring(0, hfile.getName().lastIndexOf(".")).replace("-", "_");
-        String className = "I" + pureClassName;
+        String className = pureClassName;
         File hjfile = new File(hfile.getParent() + File.separator + className + ".java");
         hjfile.createNewFile();
 
@@ -97,7 +97,7 @@ public class ConverterWrapperH {
 
         projectContext.newClass(className, categoryName);
 
-        projectContext.addImports(pureClassName, packageName + "." + projectContext.classCtx.className());// step_02
+//        projectContext.addImports(pureClassName, packageName + "." + projectContext.classCtx.className());// step_02
         projectContext.addImports(projectContext.classCtx.className(), packageName + "." + projectContext.classCtx.className());
 
         if (mainInterface != null) {
@@ -168,14 +168,60 @@ public class ConverterWrapperH {
         }
     }
 
+//    public IMABYT3_Activity() {
+//    }
 
     private static void h_process_default_constructor(StringBuilder sb, CommonTree tree, ProjectContext projectCtx) {
+        sb.
+                append("\n").
+                append("\t").
+                append("public ").
+                append(projectCtx.classCtx.className).append("(");
+
+        sb.append(")");
+
+        sb.append(" {  \n");
+        // add method body
+
+        h_process_default_method_body(sb);
+
+        sb.append("    }\n").append("\n");
 
 
     }
 
+    private static void h_process_default_method_body(StringBuilder sb) {
+        for (String[] row : fieldsList) {
+            String isClassString = row[3];
+            boolean isClass = Boolean.valueOf(isClassString);
+            String typeName = row[0];
+            String variableName = row[2];
+            if (isClass) {
+                sb.append("\t").
+                        append("    ").
+                        append("this.").
+                        append(variableName).
+                        append(" = ").
+                        append("new ").
+                        append(typeName).
+                        append("()").
+                        append(";").
+                        append("\n");
+            } else {
+                sb.append("\t").
+                        append("    ").
+                        append("this.").
+                        append(variableName).
+                        append(" = ").
+                        append("\"\"").
+                        append(";").
+                        append("\n");
+            }
+
+        }
+    }
+
     private static void h_process_method(StringBuilder sb, CommonTree tree, ProjectContext projectCtx) {
-        h_process_default_constructor(sb, tree, projectCtx);
         String type = "";
         String name = "";
         String modifier;
@@ -198,6 +244,7 @@ public class ConverterWrapperH {
             }
         }
 
+        h_process_default_constructor(sb, tree, projectCtx);
         h_process_for_initFromDictionary(sb, projectCtx, type, name, params);
     }
 
@@ -223,14 +270,41 @@ public class ConverterWrapperH {
         }
         sb.append(")");
 
-        sb.append(" {  \n")
-//                append("    return ").
-//                append(transType.equals("void") ? "" : (transType.equals("boolean") ? "false" : "null"))
-//                .append(";\n")
-                .append("    }\n")
+        sb.append(" {  \n");
+        // add method body
+        h_process_default_method_for_initFromDictionary(sb);
+        sb.append("    }\n").append("\n");
+    }
 
-                .append("\n")
-        ;
+    private static void h_process_default_method_for_initFromDictionary(StringBuilder sb) {
+        for (String[] row : fieldsList) {
+            String isClassString = row[3];
+            boolean isClass = Boolean.valueOf(isClassString);
+            String typeName = row[0];
+            String variableName = row[2];
+            if (isClass) {
+                sb.append("\t").
+                        append("    ").
+                        append("this.").
+                        append(variableName).
+                        append(" = ").
+                        append("new ").
+                        append(typeName).
+                        append("()").
+                        append(";").
+                        append("\n");
+            } else {
+
+                sb.append("\t").
+                        append("    ").
+                        append("this.").
+                        append(variableName).
+                        append(" = ").
+                        append("\"\"").
+                        append(";").
+                        append("\n");
+            }
+        }
     }
 
     private static void h_process_method_params(Map<String, String> params, CommonTree tree, ProjectContext projectContext) {
@@ -308,7 +382,7 @@ public class ConverterWrapperH {
 
         String transformedType = Utils.transformType(type, projectCtx.classCtx);
 
-        String[] fieldRow = new String[]{transformedType, fieldNameList.get(0), String.valueOf(transformedType.equals(type))};
+        String[] fieldRow = new String[]{type, transformedType, fieldNameList.get(0), String.valueOf(transformedType.equals(type))};
         fieldsList.add(fieldRow);
 
         sb.

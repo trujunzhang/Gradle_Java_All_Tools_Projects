@@ -112,22 +112,22 @@ public final class ConverterWrapper {
             }
         } else {
             // m-files
-            for (File f : files) {
-                if (f.getName().endsWith(".m")) {
-                    if (f.getName().contains("+")) {
-                        log.info(f.getAbsolutePath() + " skipped due to '+' in name...");
-                        continue;
-                    }
-                    try {
-                        log.info(f.getAbsolutePath() + " converting...");
-                        ConverterWrapperM.convert_m(f.getAbsolutePath(), projectContext, new StringBuilder());
-                        log.info(f.getAbsolutePath() + " converted.");
-                    } catch (Exception e) {
-                        log.info("Error converting " + f.getAbsolutePath());
-                        log.error(e.getMessage(), e);
-                    }
-                }
-            }
+//            for (File f : files) {
+//                if (f.getName().endsWith(".m")) {
+//                    if (f.getName().contains("+")) {
+//                        log.info(f.getAbsolutePath() + " skipped due to '+' in name...");
+//                        continue;
+//                    }
+//                    try {
+//                        log.info(f.getAbsolutePath() + " converting...");
+//                        ConverterWrapperM.convert_m(f.getAbsolutePath(), projectContext, new StringBuilder());
+//                        log.info(f.getAbsolutePath() + " converted.");
+//                    } catch (Exception e) {
+//                        log.info("Error converting " + f.getAbsolutePath());
+//                        log.error(e.getMessage(), e);
+//                    }
+//                }
+//            }
         }
 
         // subdirectories
