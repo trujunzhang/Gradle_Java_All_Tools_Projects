@@ -29,6 +29,8 @@ public class ConverterWrapperH {
 
     public static final Logger log = LoggerFactory.getLogger(ConverterWrapperH.class);
 
+    private static List<String[]> fieldsList = new LinkedList<>();
+
     private ConverterWrapperH() {
     }
 
@@ -166,7 +168,14 @@ public class ConverterWrapperH {
         }
     }
 
+
+    private static void h_process_default_constructor(StringBuilder sb, CommonTree tree, ProjectContext projectCtx) {
+
+
+    }
+
     private static void h_process_method(StringBuilder sb, CommonTree tree, ProjectContext projectCtx) {
+        h_process_default_constructor(sb, tree, projectCtx);
         String type = "";
         String name = "";
         String modifier;
@@ -191,6 +200,7 @@ public class ConverterWrapperH {
 
         h_process_for_initFromDictionary(sb, projectCtx, type, name, params);
     }
+
 
     private static void h_process_for_initFromDictionary(StringBuilder sb, ProjectContext projectCtx, String type, String name, Map<String, String> params) {
         String transType = Utils.transformType(type, projectCtx.classCtx);
@@ -295,7 +305,12 @@ public class ConverterWrapperH {
                     break;
             }
         }
+
         String transformedType = Utils.transformType(type, projectCtx.classCtx);
+
+        String[] fieldRow = new String[]{transformedType, fieldNameList.get(0), String.valueOf(transformedType.equals(type))};
+        fieldsList.add(fieldRow);
+
         sb.
                 append("\t").
                 append(transformedType).
