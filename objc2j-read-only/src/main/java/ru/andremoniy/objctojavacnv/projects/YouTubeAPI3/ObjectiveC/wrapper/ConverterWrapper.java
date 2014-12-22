@@ -92,18 +92,24 @@ public final class ConverterWrapper {
         File dir = new File(path);
         List<File> files = Arrays.asList(dir.listFiles());
 
+        File outDir = new File(dir.getParent(), "convert_out");
+        if (outDir.exists() == false) {
+            outDir.mkdir();
+        }
+
+        File sourceDir = dir;
         // header-files
         if (whatConvert == HEADER_FILES) {
             for (File f : files) {
                 if (f.getName().endsWith(".h")) {
-                    if (f.getName().contains("+")) {
-                        log.info(f.getAbsolutePath() + " skipped due to '+' in name...");
-                        continue;
-                    }
                     try {
                         log.info(f.getAbsolutePath() + " converting...");
 
-                        ConverterWrapperH.convert_h(f.getAbsolutePath(), projectContext, null, null);
+                        // converting ..................
+                        // .............................
+                        ConverterWrapperH.convert_h(f.getAbsolutePath(), projectContext, sourceDir, outDir);
+                        // .............................
+                        // converting ..................
 
                         log.info(f.getAbsolutePath() + " converted (" + projectContext.h_counter + " headers converted).");
                     } catch (Exception e) {

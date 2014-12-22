@@ -35,7 +35,7 @@ public class ConverterWrapperH {
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    public static StringBuilder convert_h(String fileName, ProjectContext projectContext, StringBuilder originalImportsSb, StringBuilder importsSb) throws IOException, RecognitionException {
+    public static StringBuilder convert_h(String fileName, ProjectContext projectContext, File sourceDir, File outDir) throws IOException, RecognitionException {
         projectContext.h_counter++;
 
         File hfile = new File(fileName);
@@ -47,8 +47,7 @@ public class ConverterWrapperH {
         // new file with java code
         String pureClassName = hfile.getName().substring(0, hfile.getName().lastIndexOf(".")).replace("-", "_");
         String className = pureClassName;
-        File hjfile = new File(hfile.getParent() + File.separator + className + ".java");
-        hjfile.createNewFile();
+
 
         String packageName = "mab.yt3.wrapper";// step_01
 
@@ -67,8 +66,6 @@ public class ConverterWrapperH {
         ObjchParser.code_return result = parser.code();
 
         //StringBuilder sb = new StringBuilder();
-
-        if (originalImportsSb == null) originalImportsSb = new StringBuilder();
 
         Utils.addOriginalImports(input, projectContext);
 
@@ -101,20 +98,19 @@ public class ConverterWrapperH {
             process_interface(projectContext, mainInterface, mainCb, false, false, cb);
         }
 
-        if (importsSb == null) {
-            importsSb = new StringBuilder();
-        }
         Utils.addAdditionalImports(projectContext);
 
         if (!categoryClass) {
             mainCb.a("}\n"); // end of class
 
-            cb.a(importsSb);
         }
 
         cb.a(mainCb);
 
-        writeStringToJavaFile(categoryClass, hjfile, cb);
+        String subDir = fileName.replace(sourceDir.getAbsolutePath(), "");
+        File outile = new File(outDir, className + ".java");
+        outile.createNewFile();
+        writeStringToJavaFile(categoryClass, outile, cb);
 
         return cb.sb();
 
