@@ -174,27 +174,6 @@ public class ConverterWrapperH {
         }
     }
 
-    private static void h_process_extern(StringBuilder sb, CommonTree tree, ProjectContext projectCtx) {
-        String type = "";
-        String name = "";
-        for (Object child : tree.getChildren()) {
-            switch (((CommonTree) child).token.getType()) {
-                case ObjchParser.TYPE:
-                    type = ((CommonTree) child).getChild(0).toString();
-                    break;
-                case ObjchParser.FIELD_NAME:
-                    name = ((CommonTree) child).getChild(0).toString();
-                    break;
-            }
-        }
-
-        name = name.trim();
-        if (!name.isEmpty()) {
-            projectCtx.staticFields.put(name, projectCtx.classCtx.className());
-        }
-        sb.append("\t").append("public static ").append(Utils.transformType(type, projectCtx.classCtx)).append(" ").append(name).append(";\n");
-    }
-
     private static void h_process_method(StringBuilder sb, CommonTree tree, ProjectContext projectCtx) {
         String type = "";
         String name = "";
@@ -304,59 +283,6 @@ public class ConverterWrapperH {
         cb1.abstractClass(innerClass, true, interfaceName, superclassName);
 
     }
-
-//    private static void h_process_protocol(StringBuilder sb, CommonTree tree, ProjectContext projectContext) {
-//        String interfaceName = "";
-//        StringBuilder bodySb = new StringBuilder();
-//        for (Object child : tree.getChildren()) {
-//            switch (((CommonTree) child).token.getType()) {
-//                case ObjchParser.NAME:
-//                    interfaceName = ((CommonTree) child).getChild(0).getText().trim();
-//                    break;
-//                case ObjchParser.FIELDS:
-//                    h_process_fields(bodySb, (CommonTree) child, projectContext, "protected");
-//                    break;
-//                case ObjchParser.METHOD:
-//                    h_process_method(bodySb, (CommonTree) child, projectContext);
-//                    break;
-//            }
-//        }
-//
-//        sb.append("\n\tpublic  class ").append(interfaceName).append(" extends Object").append(" {\n");
-//        sb.append(bodySb);
-//        sb.append("\t\n}\n");
-//
-//    }
-
-//    private static void h_process_interface2(StringBuilder sb, CommonTree tree, ProjectContext projectContext) {
-//        String currentGroupModifier = "";
-//        for (Object child : tree.getChildren()) {
-//            switch (((CommonTree) child).token.getType()) {
-//                case ObjchParser.GROUP_MODIFIER:
-//                    currentGroupModifier = ((CommonTree) child).getChild(0).toString().substring(1);
-//                    break;
-//                case ObjchParser.FIELDS:
-//                    h_process_fields(sb, (CommonTree) child, projectContext, currentGroupModifier);
-//                    break;
-//                case ObjchParser.METHOD:
-//                    h_process_method(sb, (CommonTree) child, projectContext);
-//                    break;
-//            }
-//        }
-//
-//    }
-
-//    private static void h_process_fields(StringBuilder sb, CommonTree tree, ProjectContext projectContext, String currentGroupModifier) {
-//        sb.append("\n");
-//        for (Object child : tree.getChildren()) {
-//            switch (((CommonTree) child).token.getType()) {
-//                case ObjchParser.FIELD:
-//                    h_process_field(sb, (CommonTree) child, projectContext, currentGroupModifier, false);
-//                    break;
-//            }
-//        }
-//        sb.append("\n");
-//    }
 
     private static void h_process_field(StringBuilder sb, CommonTree tree, ProjectContext projectCtx, String currentGroupModifier, boolean isStatic) {// TODO djzhang class field
         String type = "";
