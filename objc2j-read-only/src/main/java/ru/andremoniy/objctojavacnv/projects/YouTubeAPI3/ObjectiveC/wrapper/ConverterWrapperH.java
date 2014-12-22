@@ -5,7 +5,6 @@ import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;
-import org.antlr.runtime.tree.Tree;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,11 +28,6 @@ import java.util.*;
 public class ConverterWrapperH {
 
     public static final Logger log = LoggerFactory.getLogger(ConverterWrapperH.class);
-
-    private static final int UNDEFINED_TYPEDEF = 0;
-    private static final int RENAME_TYPEDEF = 1;
-    private static final int ENUM_TYPEDEF = 2;
-    private static final int STRUCT_TYPEDEF = 3;
 
     private ConverterWrapperH() {
     }
@@ -163,9 +157,6 @@ public class ConverterWrapperH {
                 case ObjchParser.FIELD:
                     // todo: must be static!
                     h_process_field(sb2, (CommonTree) child, projectContext, currentGroupModifier, skipInterface);
-                    break;
-                case ObjchParser.TYPEDEF:
-                    h_process_typedef(sb2, childTree, projectContext);
                     break;
                 case ObjchParser.METHOD:
                     h_process_method(sb2, (CommonTree) child, projectContext);
@@ -311,125 +302,5 @@ public class ConverterWrapperH {
         sb.append(";\n");
     }
 
-    private static void h_process_typedef(StringBuilder sb, CommonTree tree, ProjectContext projectCtx) {
-        Set<String> names = new HashSet<>();
-        String oldName = "";
-        int typedef_type = UNDEFINED_TYPEDEF;
-        List<String[]> enumElements = new ArrayList<>();
-        for (Object child : tree.getChildren()) {
-            switch (((CommonTree) child).token.getType()) {
-                case ObjchParser.TYPEDEF_NAME:
-                    names.add(((CommonTree) child).getChild(0).getText().trim());
-                    break;
-                case ObjchParser.TYPEDEF_ELEMENT:
-                    enumElements.add(new String[]{((CommonTree) child).getChild(0).toString()});
-                    break;
-                case ObjchParser.OLD_NAME:
-                    oldName = ((CommonTree) child).getChild(0).toString();
-                    typedef_type = RENAME_TYPEDEF;
-                    break;
-                case ObjchParser.ENUM:
-                    enumElements = h_parse_enum((CommonTree) child);
-                    typedef_type = ENUM_TYPEDEF;
-                    break;
-                case ObjchParser.STRUCT:
-                    CommonTree typedefNameTree = (CommonTree) ((CommonTree) child).getFirstChildWithType(ObjchParser.TYPEDEF_NAME);
-                    if (typedefNameTree != null) {
-                        names.add(typedefNameTree.getChild(0).getText().trim());
-                    }
-                    typedefNameTree = (CommonTree) ((CommonTree) child).getFirstChildWithType(ObjchParser.NAME);
-                    if (typedefNameTree != null) {
-                        names.add(typedefNameTree.getChild(0).getText().trim());
-                    }
-                    enumElements = h_parse_struct((CommonTree) child, projectCtx);
-                    typedef_type = STRUCT_TYPEDEF;
-                    break;
-            }
-        }
-        sb.append("\n");
-        names.remove(null);
-        names.remove("");
-        if (names.isEmpty() && !oldName.isEmpty()) names.add(oldName);
-        String name = !names.isEmpty() ? names.iterator().next() : "";
-        if (typedef_type == ENUM_TYPEDEF) {
-            finish_enum(sb, projectCtx, name, enumElements);
-        } else if (typedef_type == RENAME_TYPEDEF) {
-            sb.append("\tpublic static class ").append(name).append(" extends ").append(oldName).append(" { }");
-        } else if (typedef_type == STRUCT_TYPEDEF) {
-            sb.append("\tpublic static class ").append(name).append(" {\n");
-            for (String[] field : enumElements) {
-                sb.append("\t\t").append(field[0]);
-            }
-            sb.append("\t}\n");
-        }
-    }
 
-    private static void finish_enum(StringBuilder sb, ProjectContext projectContext, String name, List<String[]> enumElements) {
-
-        sb.append("\tpublic enum ").append(name).append(" {\n");
-        for (int i = 0, enumElementsSize = enumElements.size(); i < enumElementsSize; i++) {
-            String element = enumElements.get(i)[0];
-            sb.append("\t\t").append(element);
-            projectContext.staticFields.put(element, projectContext.classCtx.className() + "." + name);
-            if (i < enumElementsSize - 1) {
-                sb.append(",");
-            }
-            sb.append("\n");
-        }
-        sb.append("\t").append("}\n");
-
-        List<String> enums = projectContext.headerEnums.get(projectContext.classCtx.className);
-        if (enums == null) {
-            enums = new ArrayList<>();
-            projectContext.headerEnums.put(projectContext.classCtx.className, enums);
-        }
-        enums.add(name);
-    }
-
-    private static List<String[]> h_parse_struct(CommonTree tree, ProjectContext projectCtx) {
-        List<String[]> fields = new ArrayList<>();
-        for (Object child : tree.getChildren()) {
-            switch (((CommonTree) child).token.getType()) {
-                case ObjchParser.FIELD:
-                    fields.add(new String[]{h_parse_field((CommonTree) child, projectCtx)});
-                    break;
-            }
-        }
-        return fields;
-    }
-
-    private static String h_parse_field(CommonTree tree, ProjectContext projectCtx) {
-        String type = "";
-        String name = "";
-        for (Object child : tree.getChildren()) {
-            switch (((CommonTree) child).token.getType()) {
-                case ObjchParser.TYPE:
-                    type = ((CommonTree) child).getChild(0).toString();
-                    break;
-                case ObjchParser.FIELD_NAME:
-                    name = ((CommonTree) child).getChild(0).toString();
-                    break;
-            }
-        }
-        return Utils.transformType(type, projectCtx.classCtx) + " " + name + ";\n";
-    }
-
-    private static List<String[]> h_parse_enum(CommonTree tree) {
-        List<String[]> enumElements = new ArrayList<>();
-        for (Object child : tree.getChildren()) {
-            CommonTree childTree = (CommonTree) child;
-            switch (childTree.token.getType()) {
-                case ObjchParser.TYPEDEF_ELEMENT:
-                    String id = childTree.getChild(0).toString();
-                    String value = null;
-                    Tree nameTree = childTree.getFirstChildWithType(ObjchLexer.VALUE);
-                    if (nameTree != null) {
-                        value = nameTree.getChild(0).getText();
-                    }
-                    enumElements.add(new String[]{id, value});
-                    break;
-            }
-        }
-        return enumElements;
-    }
 }
